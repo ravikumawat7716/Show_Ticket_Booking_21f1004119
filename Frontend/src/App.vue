@@ -1,22 +1,11 @@
 <template>
-  <HelloWorld />
-  <h1>Welcome {{ message }} !</h1>
-  <HelloWorld />
-  <HelloWorld />
+  <!-- <h1>This will be displayed on everypage. Because It's added with routerview.</h1> -->
+<RouterView></RouterView>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'; // import the component
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-  },
-  data() {
-    return {
-      message: 'Thomas',
-    };
-  },
 };
 </script>
 

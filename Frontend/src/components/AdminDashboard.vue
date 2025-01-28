@@ -1,6 +1,6 @@
 <template>
     This is Admin Dashboard.
-    <div v-if="users">
+    <!-- <div v-if="users">
         <ul>
             <li v-for="user in users" :key="user.id">
                 {{ user.email }} - {{ user.name }} 
@@ -9,13 +9,13 @@
         </ul></div>
     <div v-else>
         User data is loading...
-    </div>
+    </div> -->
 
 
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 export default {
     name: 'AdminDashboard',
     data() {
@@ -25,34 +25,34 @@ export default {
 
     },
     async mounted() {
-        if (!localStorage.getItem('token')) {
-            this.$router.push('/login');
-        }
-        else {
-            console.log('Token is present');
-            if (localStorage.getItem('role') !== 'admin') {
-                this.$router.push('/');
-            }
-            else {
-                console.log('Role is admin');
-                try{
-                const response = await axios.get('http://localhost:5000/admin', {
-                    headers: {
-                        Authorization: `${localStorage.getItem('token')}`,
-                    },
-                });
-                console.log(response);
-                this.users = response.data;
-                console.log("===============================");
-                console.log(this.users);
-            }
-            catch (error) {
-                console.error(error);
-                alert("Something went wrong");
+        // if (!localStorage.getItem('token')) {
+        //     this.$router.push('/login');
+        // }
+        // else {
+        //     console.log('Token is present');
+        //     if (localStorage.getItem('role') !== 'admin') {
+        //         this.$router.push('/');
+        //     }
+        //     else {
+        //         console.log('Role is admin');
+        //         try{
+        //         const response = await axios.get('http://localhost:5000/admin', {
+        //             headers: {
+        //                 Authorization: `${localStorage.getItem('token')}`,
+        //             },
+        //         });
+        //         console.log(response);
+        //         this.users = response.data;
+        //         console.log("===============================");
+        //         console.log(this.users);
+        //     }
+        //     catch (error) {
+        //         console.error(error);
+        //         alert("Something went wrong");
 
-            }
-        }
-    }
+        //     }
+        // }
+    // }
     },
 };
 

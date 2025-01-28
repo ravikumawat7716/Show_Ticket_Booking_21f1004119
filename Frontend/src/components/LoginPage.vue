@@ -30,7 +30,7 @@ export default {
                     alert('Login Successful');
                     localStorage.setItem('token', response.data.token);
                     localStorage.setItem('username', response.data.username);
-                    localStorage.setItem('role', response.data.role);
+                    localStorage.setItem('role', response.data.user_role);
                     this.$router.push('/');
                 }
                 if (response.status === 401) {

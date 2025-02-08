@@ -5,6 +5,7 @@ from instance.db import db
 from application.config import Config
 from application.models import User, Venue , Show , Bookings , Reviews
 from werkzeug.security import generate_password_hash
+from instance.mail import mail
 
 
 def create_app():
@@ -12,6 +13,7 @@ def create_app():
     CORS(app)
     db.init_app(app)
     api.init_app(app)
+    mail.init_app(app)
     initialize_database()
     return app
 

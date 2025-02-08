@@ -12,13 +12,14 @@ class Venue(db.Model):
     name = db.Column(db.String(80), unique=True, nullable=False)
     location = db.Column(db.String(120), nullable=False)
     capacity = db.Column(db.Integer, nullable=False)
-    price = db.Column(db.Float, nullable=False)
+    
     
 class Show(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullable=False)
     date = db.Column(db.Date, nullable=False)
     time = db.Column(db.Time, nullable=False)
+    price = db.Column(db.Float, nullable=False)
     venue_id = db.Column(db.Integer, db.ForeignKey('venue.id'), nullable=False)
     venue = db.relationship('Venue', backref=db.backref('shows', lazy=True))
     

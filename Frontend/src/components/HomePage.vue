@@ -18,7 +18,7 @@
       linkedin_url : null,
       };
     },
-    async mounted() {
+     mounted() {
         console.log('==============================');
         console.log("HomePage is mounted");
         if (localStorage.getItem('token')) {
@@ -32,31 +32,31 @@
       const name = localStorage.getItem('username');
       this.name_variable = name;
       console.log('==============================');
-      try {
-        const response = await axios.get('http://localhost:5000/userdata', {
-          headers: {
-            Authorization: `${localStorage.getItem('token')}`,
-          },
-        });
-        console.log(response);
-        if (response.status === 200) {
-          if (response.data.message === 'Unauthorized') {
-            alert('Unauthorized Access');
-            localStorage.removeItem('token');
-            localStorage.removeItem('username');
-            localStorage.removeItem('role');
-            this.$router.push('/login');
-          }
-          this.email = response.data.email;
-          this.linkedin_url = 'linkedin.com';
-        }
+    //   try {
+    //     const response = await axios.get('http://localhost:5000/userdata', {
+    //       headers: {
+    //         Authorization: `${localStorage.getItem('token')}`,
+    //       },
+    //     });
+    //     console.log(response);
+    //     if (response.status === 200) {
+    //       if (response.data.message === 'Unauthorized') {
+    //         alert('Unauthorized Access');
+    //         localStorage.removeItem('token');
+    //         localStorage.removeItem('username');
+    //         localStorage.removeItem('role');
+    //         this.$router.push('/login');
+    //       }
+    //       this.email = response.data.email;
+    //       this.linkedin_url = 'linkedin.com';
+    //     }
         
   
-      } catch (error) {
-        console.error(error);
-        alert("Something went wrong");
-      }
+    //   } catch (error) {
+    //     console.error(error);
+    //     alert("Something went wrong");
+    //   }
       
-    },
+  },
   };
   </script>

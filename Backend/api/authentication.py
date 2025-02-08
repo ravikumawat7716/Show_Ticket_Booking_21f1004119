@@ -4,6 +4,7 @@ from flask import request
 from instance.db import db
 from application.models import User
 from werkzeug.security import check_password_hash , generate_password_hash
+from utils.mail import send_email
 
 
 class Login(Resource):
@@ -36,6 +37,7 @@ class Registration(Resource):
         username = data['username']
         email = data['email']
         password = data['password']
+        password_copy = password
         if username and email and password:
             user = User.query.filter_by(username=username).first()
             if user:
@@ -45,6 +47,8 @@ class Registration(Resource):
                 user = User(username=username, email=email, password=password, role='user')
                 db.session.add(user)
                 db.session.commit()
+                print("Database Commit done , now sending the email")
+                send_email(email, "Registration successful", f"You have successfully registered on our Show Ticket Booking platform.Your Username is {email} and Password is {password_copy}")
                 return {"message": "User created successfully."}, 201
         else:
             return {"message": "Invalid data."}, 400

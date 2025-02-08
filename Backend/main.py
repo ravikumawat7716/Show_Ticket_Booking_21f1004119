@@ -1,5 +1,7 @@
 from utils.configuration import create_app
 import api.authentication
+import api.venues
+from utils.mail import send_email
 # from instance.app import app
 
 app = create_app()
@@ -8,6 +10,12 @@ app = create_app()
 @app.route('/')
 def index():
     return 'Backend Server is running.'
+
+@app.route('/test')
+def test():
+    send_email()
+    return 'Testing email'
+    
 
 if __name__=='__main__':
     app.run(debug=True)
